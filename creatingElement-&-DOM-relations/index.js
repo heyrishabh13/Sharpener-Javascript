@@ -9,8 +9,6 @@ header.lastElementChild.style.fontStyle = "italic";
 const p = document.createElement("p");
 p.innerHTML = "Total fruits: 4";
 
-const fruits = document.querySelector(".fruits");
-
 const parent = header.nextElementSibling;
 
 const referenceElement = parent.children[1];
