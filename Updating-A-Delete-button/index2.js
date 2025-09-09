@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", initialize);
 
 // When the page get load display all users
 function initialize() {
-  const userList = JSON.parse(localStorage.getItem("users")) || [];
+  const users = JSON.parse(localStorage.getItem("usersList")) || [];
 
-  for (let i = 0; i < userList.length; i++) {
-    display(userList[i]);
+  for (let i = 0; i < users.length; i++) {
+    display(users[i]);
   }
 }
 
@@ -24,11 +24,12 @@ function handleFormSubmit(event) {
     phone,
   };
 
-  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const users = JSON.parse(localStorage.getItem("usersList")) || [];
 
   obj.id = Date.now();
+
   users.push(obj);
-  localStorage.setItem("users", JSON.stringify(users));
+  localStorage.setItem("usersList", JSON.stringify(users));
 
   display(obj);
 }
@@ -38,19 +39,21 @@ function display(obj) {
   const ul = document.querySelector("ul");
   const li = document.createElement("li");
 
-  li.textContent = obj.username + " - " + obj.email + " - " + obj.phone + " ";
+  li.textContent = obj.username + " " + obj.email + " " + obj.phone + " ";
+  li.id = data.id;
+
+  ul.appendChild(li);
 
   const btn = document.createElement("button");
   btn.textContent = "Delete";
-  li.appendChild(btn);
   btn.addEventListener("click", () => deleteData(obj.id, li));
 
-  ul.appendChild(li);
+  li.appendChild(btn);
 }
 
 // use this function to delete the user details from local store and DOM (screen)
 function deleteData(id, li) {
-  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const users = JSON.parse(localStorage.getItem("usersList")) || [];
 
   const updatedUsers = [];
   for (let i = 0; i < users.length; i++) {
@@ -59,7 +62,7 @@ function deleteData(id, li) {
     }
   }
 
-  localStorage.setItem("users", JSON.stringify(updatedUsers));
+  localStorage.setItem("usersList", JSON.stringify(updatedUsers));
 
   li.remove();
 }
