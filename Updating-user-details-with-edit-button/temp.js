@@ -117,7 +117,7 @@ function update(editId, userDetails, usersList) {
 
       break;
     }
-  }
+  } 
 
   const li = document.getElementById(editId);
 
