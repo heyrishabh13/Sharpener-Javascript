@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extra</title>
+  </head>
+  <body>
+    <h1>EXTRA</h1>
+    <script>
+      function add(value, callback) {
+        // complete this function
+        setTimeout(() => {
+          value += 3;
+          console.log("Added 3");
+          callback(value);
+        }, 2000);
+      }
+
+      function multiply(value, callback) {
+        // complete this function
+        setTimeout(() => {
+          value *= 2;
+          console.log("Multiplied by 2");
+
+          callback(value);
+        }, 1000);
+      }
+
+      // don't change it
+      const initialValue = 2;
+
+      // create callback hell
+      add(initialValue, (value) => {
+        multiply(value, (finalValue) => {
+          console.log("Final Result", finalValue);
+        });
+      });
+    </script>
+  </body>
+</html>
