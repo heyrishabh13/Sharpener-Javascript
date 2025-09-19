@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-clifford: #da373d;
+      }
+    </style>
+  </head>
+  <body class="bg-green-200">
+    <h1 class="text-center text-6xl mt-4">Todo App</h1>
+    <div
+      class="border-2 border-black p-2 w-64 rounded-md mx-auto bg-white mt-6"
+    >
+      <form onsubmit="handleFormSubmit(event)">
+        <label for="title">Title:</label>
+        <input
+          class="border-2 rounded-md px-1 w-full"
+          type="text"
+          name="title"
+          id="title"
+        />
+        <label for="description">Description:</label>
+        <input
+          class="border-2 rounded-md px-1 w-full"
+          type="text"
+          name="description"
+          id="description"
+        />
+        <button
+          class="border-2 rounded-md px-6 py-1 mx-auto block my-2 text-white bg-black"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+    <div>
+      <h2 class="text-center text-3xl">Pending Tasks</h2>
+      <ul id="pendingTasks"></ul>
+    </div>
+    <div>
+      <h2 class="text-center text-3xl">Completed Tasks</h2>
+      <ul id="completedTasks"></ul>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+
+  <script src="index.js"></script>
+</html>
